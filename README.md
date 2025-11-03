@@ -22,10 +22,6 @@ Integridade de Dados: Garante a consistência dos dados com a correção de alia
 
 O projeto adota uma arquitetura limpa e modular, separando a lógica de dados, a orquestração da aplicação e a interface.
 
-🏗️ Estrutura do Projeto
-
-O projeto adota uma arquitetura limpa e modular, separando a lógica de dados, a orquestração da aplicação e a interface.
-
 app.py: Ponto de entrada principal do Streamlit (Rodar este arquivo).
 
 .gitignore
