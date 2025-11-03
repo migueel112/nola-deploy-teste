@@ -8,3 +8,4 @@ python-dotenv==1.0.1
 requests==2.32.3
 psycopg2-binary==2.9.9
 Faker==20.1.0
+plotly==5.15.0
