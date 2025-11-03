@@ -32,7 +32,7 @@ O projeto adota uma arquitetura limpa e modular, separando a lógica de dados, a
 │       ├── 2_Lojas.py        # Análise de desempenho por Unidade/Loja
 │       ├── 3_Clientes.py     # Análise de perfis e comportamento de Clientes
 │       └── 4_IA.py           # Interface para o assistente de IA (Gemini)
-|    ├── app.py                    # Ponto de entrada principal do Streamlit (Rodar este arquivo)
+├── app.py                    # Ponto de entrada principal do Streamlit (Rodar este arquivo)
 ├── .gitignore                
 └── README.md              
 
