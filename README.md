@@ -22,20 +22,22 @@ Integridade de Dados: Garante a consistência dos dados com a correção de alia
 
 O projeto adota uma arquitetura limpa e modular, separando a lógica de dados, a orquestração da aplicação e a interface.
 
-├── backend/
-│   ├── carregador_dados.py   # Lógica de extração e caching dos dados
-│   ├── db_config.py          # Configuração da conexão com o DB
-│   └── logica_ia.py          # Implementação da comunicação com o modelo de IA (Gemini)
-├── frontend/
-│   └── paginas/              # Diretório contendo as 4 páginas da aplicação
-│       ├── 1_Marca.py        # Análise de desempenho por Marca
-│       ├── 2_Lojas.py        # Análise de desempenho por Unidade/Loja
-│       ├── 3_Clientes.py     # Análise de perfis e comportamento de Clientes
-│       └── 4_IA.py           # Interface para o assistente de IA (Gemini)
-├── app.py                    # Ponto de entrada principal do Streamlit (Rodar este arquivo)
-├── .gitignore                
-└── README.md              
+backend/
+  carregador_dados.py: Lógica de extração e caching dos dados.
+  db_config.py: Configuração da conexão com o DB.
+  logica_ia.py: Implementação da comunicação com o modelo de IA (Gemini).
 
+frontend/
+  paginas/ (Diretório contendo as 4 páginas da aplicação)
+    1_Marca.py: Análise de desempenho por Marca.
+    2_Lojas.py: Análise de desempenho por Unidade/Loja.
+    3_Clientes.py: Análise de perfis e comportamento de Clientes.
+    4_IA.py: Interface para o assistente de IA (Gemini).
+  
+  app.py: Ponto de entrada principal do Streamlit (Rodar este arquivo).
+
+.gitignore
+README.md
 
 💻 Tecnologias Envolvidas
 
