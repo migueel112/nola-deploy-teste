@@ -1,0 +1,19 @@
+# Python virtual environments
+venv/
+.venv/
+
+# Environment variables
+.env
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local artifacts
+rodararquivo.txt
+secrets.toml
+*.log
+
+# Generated data files
+generate_data.*
