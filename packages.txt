@@ -1,0 +1,3 @@
+# filepath: /workspaces/nola-god-level/packages.txt
+build-essential
+libpq-dev
