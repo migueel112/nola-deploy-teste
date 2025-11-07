@@ -67,7 +67,8 @@ def aplicar_filtros_unidade(df):
         estado_sel = st.sidebar.selectbox("1. Filtrar por Estado:", options=estados)
         
         if estado_sel != 'Todos os Estados':
-            lojas = df[df['state'] == estado_sel]['store_id'].unique()
+            df = df[df['state'] == estado_sel].copy()  # <-- CORREÇÃO: Filtra o DataFrame pelo estado
+            lojas = df['store_id'].unique()
             titulo = f"Performance do Estado: {estado_sel}"
         else:
             lojas = df['store_id'].unique()
@@ -161,12 +162,11 @@ def exibir_analise_unidade(df):
     
     #canais
     st.subheader("Distribuição do Mix de Vendas")
-    df_canais = df.groupby('channel_id')['total_amount'].sum().reset_index(name='Faturamento')
-    df_canais['Nome do Canal'] = df_canais['channel_id'].map(MAPA_NOMES_CANAIS)
+    df_canais = df.groupby('channel_name')['total_amount'].sum().reset_index(name='Faturamento')
     
-    fig_canais = px.pie(df_canais, names='Nome do Canal', values='Faturamento',
+    fig_canais = px.pie(df_canais, names='channel_name', values='Faturamento',
                         title='Proporção de Faturamento por Canal', hole=0.5,
-                        color='Nome do Canal', color_discrete_map=MAPA_CORES_CANAIS)
+                        color='channel_name', color_discrete_map=MAPA_CORES_CANAIS)
     fig_canais.update_traces(textinfo='percent+label')
     st.plotly_chart(fig_canais, use_container_width=True)
     

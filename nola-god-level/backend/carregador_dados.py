@@ -6,34 +6,34 @@ import streamlit as st
 ENGINE = get_db_engine()
 
 DADOS_VENDAS = """
-SELECT
-    s.id,
-    s.store_id,
-    st.name AS store_name,
-    st.city,
-    st.state,
-    s.channel_id,
-    c.name AS channel_name,
-    s.created_at,
-    s.sale_status_desc,
-    s.total_amount,
-    s.total_discount,
-    s.delivery_fee,
-    s.customer_id AS customer_id,
-    COALESCE(cust.customer_name, s.customer_name) AS customer_name,
-    cust.phone_number AS customer_phone,
-    s.sub_brand_id AS sub_brand_id,
-    sb.name AS sub_brand_name
-FROM
-    sales s
-JOIN
-    stores st ON s.store_id = st.id
-LEFT JOIN
-    channels c ON s.channel_id = c.id
-LEFT JOIN
-    sub_brands sb ON s.sub_brand_id = sb.id
-LEFT JOIN
-    customers cust ON s.customer_id = cust.id;
+    SELECT
+        s.id,
+        s.store_id,
+        st.name AS store_name,
+        st.city,
+        st.state,
+        s.channel_id,
+        c.name AS channel_name,
+        s.created_at,
+        s.sale_status_desc,
+        s.total_amount,
+        s.total_discount,
+        s.delivery_fee,
+        s.customer_id AS customer_id,
+        COALESCE(cust.customer_name, s.customer_name) AS customer_name,
+        cust.phone_number AS customer_phone,
+        st.sub_brand_id AS sub_brand_id, -- <<< ALTERAÇÃO 1: Mude de 's' para 'st'
+        sb.name AS sub_brand_name
+    FROM
+        sales s
+    JOIN
+        stores st ON s.store_id = st.id
+    LEFT JOIN
+        channels c ON s.channel_id = c.id
+    LEFT JOIN
+        sub_brands sb ON st.sub_brand_id = sb.id -- <<< ALTERAÇÃO 2: Mude de 's' para 'st'
+    LEFT JOIN
+        customers cust ON s.customer_id = cust.id;
 """
 
 DADOS_ITENS = """

@@ -4,11 +4,11 @@ from sqlalchemy import create_engine #biblioteca para interagir com o banco com 
 
 load_dotenv() #carrega meu arquivo env
 
-DB_USER = os.getenv("DB_USER")
-DB_PASSWORD = os.getenv("DB_PASSWORD")
-DB_HOST = os.getenv("DB_HOST")
-DB_PORT = os.getenv("DB_PORT")
-DB_NAME = os.getenv("DB_NAME")
+DB_USER = os.getenv("DB_USER", "postgres")  # valor padrao caso a variavel nao esteja setada
+DB_PASSWORD = os.getenv("DB_PASSWORD", "5432")  # valor padrao caso a variavel nao esteja setada
+DB_HOST = os.getenv("DB_HOST", "192.168.15.32")  # valor padrao caso a variavel nao esteja setada
+DB_PORT = os.getenv("DB_PORT", "5432")  # valor padrao caso a variavel nao esteja setada
+DB_NAME = os.getenv("DB_NAME", "postgres")  # valor padrao caso a variavel nao esteja setada
 
 DATABASE_URL = f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 

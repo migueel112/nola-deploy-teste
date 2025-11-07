@@ -90,14 +90,18 @@ def exibir_distribuicao_canal_estado(df):
     
     with col_canais:
         st.markdown("##### Faturamento por Canal")
-        df_canais = df.groupby('channel_id')['total_amount'].sum().reset_index(name='Faturamento')
-        df_canais['Nome do Canal'] = df_canais['channel_id'].map(MAPA_NOMES_CANAIS)
+    
+        # Agrupando por canal e somando o faturamento
+        faturamento_canal = df.groupby('channel_name')['total_amount'].sum().reset_index()
         
-        fig_canais = px.pie(df_canais, names='Nome do Canal', values='Faturamento',
-                            title='Proporção do Faturamento por Canal', hole=0.5,
-                            template='plotly_white', color='Nome do Canal',
-                            color_discrete_map=MAPA_CORES_CANAIS, height=450)
-        st.plotly_chart(fig_canais, use_container_width=True)
+        # Gráfico de pizza para a proporção do faturamento
+        fig = px.pie(faturamento_canal, values='total_amount', names='channel_name',
+                     title='Proporção do Faturamento por Canal',
+                     color='channel_name',
+                     color_discrete_map=MAPA_CORES_CANAIS,  # <-- APLICA O MAPA DE CORES
+                     hole=0.5)
+        fig.update_traces(textinfo='percent+label')
+        st.plotly_chart(fig, use_container_width=True)
     
     with col_estados:
         st.markdown("##### Faturamento por Estado (Top 5 + Outros)")
